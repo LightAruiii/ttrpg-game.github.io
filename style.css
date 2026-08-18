@@ -7,18 +7,133 @@ body {
     text-align: center;
 }
 
-button {
-    padding: 15px 40px;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+.container {
+    max-width: 600px;
+    margin: auto;
 }
 
 h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Charakterauswahl */
+
+.characters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.characterButton {
+    padding: 18px 10px;
+    font-size: 18px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background: #292929;
+    color: white;
+    cursor: pointer;
+}
+
+.characterButton:active {
+    background: #444;
+}
+
+
+/* Aktionen */
+
+.mainActions {
+    display: flex;
+    gap: 15px;
     margin-top: 30px;
 }
 
-p {
-    color: #cccccc;
+.mainActions button {
+    flex: 1;
+    padding: 25px 10px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Angriff */
+
+.attack {
+    background: #8b0000;
+}
+
+.attack:active {
+    background: #b30000;
+}
+
+
+/* Aussetzen */
+
+.skip {
+    background: #555555;
+}
+
+.skip:active {
+    background: #777777;
+}
+
+
+/* Emotes */
+
+.emotes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.emoteButton {
+    padding: 18px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #292929;
+    color: white;
+    cursor: pointer;
+}
+
+.emoteButton:active {
+    background: #444444;
+}
+
+
+/* Verstecken */
+
+.hidden {
+    display: none;
+}
+
+
+/* Handy */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .characters {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .characterButton {
+        padding: 15px 5px;
+        font-size: 16px;
+    }
+
 }
