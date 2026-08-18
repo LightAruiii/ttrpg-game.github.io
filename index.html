@@ -11,11 +11,100 @@
 
 <body>
 
-    <h1>TTRPG Game</h1>
+    <div class="container">
 
-    <p>Handy-Steuerung</p>
+        <h1>TTRPG</h1>
 
-    <button id="startButton">Start</button>
+        <!-- Charakterauswahl -->
+        <div id="characterSelection">
+            <h2>Choose your character</h2>
+
+            <div class="characters">
+
+                <button class="characterButton" data-character="Knight">
+                    Knight
+                </button>
+
+                <button class="characterButton" data-character="Skeleton">
+                    Skeleton
+                </button>
+
+                <button class="characterButton" data-character="Zombie">
+                    Zombie
+                </button>
+
+                <button class="characterButton" data-character="Witch">
+                    Witch
+                </button>
+
+                <button class="characterButton" data-character="Demon">
+                    Demon
+                </button>
+
+                <button class="characterButton" data-character="Pumpkinman">
+                    Pumpkinman
+                </button>
+
+                <button class="characterButton" data-character="Vampire">
+                    Vampire
+                </button>
+
+                <button class="characterButton" data-character="Slime">
+                    Slime
+                </button>
+
+                <button class="characterButton" data-character="Ghost">
+                    Ghost
+                </button>
+
+                <button class="characterButton" data-character="Scarecrow">
+                    Scarecrow
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- Aktionen -->
+        <div id="actionSelection" class="hidden">
+
+            <h2 id="selectedCharacter"></h2>
+
+            <div class="mainActions">
+
+                <button id="attackButton" class="attack">
+                    ATTACK
+                </button>
+
+                <button id="skipButton" class="skip">
+                    SKIP
+                </button>
+
+            </div>
+
+
+            <!-- Emotes -->
+            <h2>Emotes</h2>
+
+            <div class="emotes">
+
+                <button class="emoteButton" data-emote="Good Job">
+                    Good Job
+                </button>
+
+                <button class="emoteButton" data-emote="NOPE">
+                    NOPE
+                </button>
+
+                <button class="emoteButton" data-emote="Hihi">
+                    Hihi
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 
