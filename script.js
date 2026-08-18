@@ -1,3 +1,24 @@
+// Verbindung zum Online-WebSocket-Server
+const socket = new WebSocket("wss://ttrpg-server.onrender.com");
+
+socket.addEventListener("open", function () {
+    console.log("Connected to TTRPG server");
+});
+
+socket.addEventListener("message", function (event) {
+    console.log("Server:", event.data);
+});
+
+socket.addEventListener("close", function () {
+    console.log("Disconnected from TTRPG server");
+});
+
+socket.addEventListener("error", function (error) {
+    console.log("WebSocket error:", error);
+});
+
+
+// Charakterauswahl
 const characterButtons = document.querySelectorAll(".characterButton");
 
 const characterSelection = document.getElementById("characterSelection");
@@ -10,12 +31,10 @@ const skipButton = document.getElementById("skipButton");
 
 const emoteButtons = document.querySelectorAll(".emoteButton");
 
-
 let playerCharacter = null;
 
 
-/* Charakter auswählen */
-
+// Charakter auswählen
 characterButtons.forEach(function(button) {
 
     button.addEventListener("click", function() {
@@ -33,33 +52,73 @@ characterButtons.forEach(function(button) {
 });
 
 
-/* Angriff */
-
+// ATTACK
 attackButton.addEventListener("click", function() {
 
-    alert(playerCharacter + " attacks!");
+    const message = {
+        character: playerCharacter,
+        action: "ATTACK"
+    };
+
+    if (socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify(message));
+
+        console.log("Sent:", message);
+
+        alert(playerCharacter + " attacks!");
+    }
+    else {
+        alert("Not connected to server.");
+    }
 
 });
 
 
-/* Aussetzen */
-
+// SKIP
 skipButton.addEventListener("click", function() {
 
-    alert(playerCharacter + " skips the turn.");
+    const message = {
+        character: playerCharacter,
+        action: "SKIP"
+    };
+
+    if (socket.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify(message));
+
+        console.log("Sent:", message);
+
+        alert(playerCharacter + " skips the turn.");
+    }
+    else {
+        alert("Not connected to server.");
+    }
 
 });
 
 
-/* Emotes */
-
+// Emotes
 emoteButtons.forEach(function(button) {
 
     button.addEventListener("click", function() {
 
         const emote = button.dataset.emote;
 
-        alert(playerCharacter + ": " + emote);
+        const message = {
+            character: playerCharacter,
+            action: "EMOTE",
+            emote: emote
+        };
+
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify(message));
+
+            console.log("Sent:", message);
+
+            alert(playerCharacter + ": " + emote);
+        }
+        else {
+            alert("Not connected to server.");
+        }
 
     });
 
