@@ -132,7 +132,7 @@ h2 {
 
 
 /* ========================================
-   Movement / controls
+   Movement
    ======================================== */
 
 .movement {
@@ -227,7 +227,7 @@ h2 {
 
 
 /* ========================================
-   DM Resolve Point Target
+   DM character target
    ======================================== */
 
 .resolveTarget {
@@ -272,6 +272,33 @@ h2 {
 
 
 /* ========================================
+   Level Up
+   ======================================== */
+
+.levelUpSection {
+    margin-top: 18px;
+}
+
+.levelUpButton {
+    width: 100%;
+    min-height: 58px;
+    padding: 10px;
+    border: 1px solid #777;
+    border-radius: 10px;
+    background: #5b4300;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.levelUpButton:active {
+    background: #7a5b00;
+}
+
+
+/* ========================================
    Resolve Points
    ======================================== */
 
@@ -302,7 +329,7 @@ h2 {
 }
 
 
-/* Negative RP */
+/* Negative */
 
 .negative {
     background: #3b2020;
@@ -313,7 +340,7 @@ h2 {
 }
 
 
-/* Positive RP */
+/* Positive */
 
 .positive {
     background: #203b20;
@@ -396,6 +423,11 @@ h2 {
     .rpButton {
         min-height: 45px;
         font-size: 12px;
+    }
+
+    .levelUpButton {
+        min-height: 52px;
+        font-size: 17px;
     }
 
 }
