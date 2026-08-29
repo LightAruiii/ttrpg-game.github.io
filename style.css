@@ -29,6 +29,35 @@ h2 {
 
 
 /* ========================================
+   Dungeon Master selection
+   ======================================== */
+
+.dungeonMasterSection {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.dungeonMasterButton {
+    width: 100%;
+    min-height: 62px;
+    padding: 12px;
+    border: 1px solid #666;
+    border-radius: 10px;
+    background: #202020;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.dungeonMasterButton:active {
+    background: #353535;
+}
+
+
+/* ========================================
    Character selection
    ======================================== */
 
@@ -131,29 +160,15 @@ h2 {
 }
 
 
-/* Left */
+/* Left / Right */
 
-#leftButton {
+.movementButton {
     background: #202020;
-    font-size: 0;
-}
-
-#leftButton::before {
-    content: "◀";
     font-size: 28px;
 }
 
-
-/* Right */
-
-#rightButton {
-    background: #202020;
-    font-size: 0;
-}
-
-#rightButton::before {
-    content: "▶";
-    font-size: 28px;
+.movementButton:active {
+    background: #363636;
 }
 
 
@@ -184,7 +199,7 @@ h2 {
    ======================================== */
 
 .emoteSection {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .emotes {
@@ -208,6 +223,59 @@ h2 {
 
 .emoteButton:active {
     background: #444444;
+}
+
+
+/* ========================================
+   Resolve Points
+   ======================================== */
+
+.resolvePoints {
+    margin-top: 20px;
+}
+
+.rpGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+}
+
+.rpButton {
+    min-height: 48px;
+    padding: 8px 4px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.rpButton:active {
+    transform: scale(0.96);
+}
+
+
+/* Negative RP */
+
+.negative {
+    background: #3b2020;
+}
+
+.negative:active {
+    background: #522828;
+}
+
+
+/* Positive RP */
+
+.positive {
+    background: #203b20;
+}
+
+.positive:active {
+    background: #2d522d;
 }
 
 
@@ -262,8 +330,7 @@ h2 {
         height: 50px;
     }
 
-    #leftButton::before,
-    #rightButton::before {
+    .movementButton {
         font-size: 24px;
     }
 
@@ -273,6 +340,11 @@ h2 {
 
     .emoteButton {
         min-height: 43px;
+        font-size: 12px;
+    }
+
+    .rpButton {
+        min-height: 45px;
         font-size: 12px;
     }
 
