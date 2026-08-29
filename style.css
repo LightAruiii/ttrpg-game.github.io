@@ -93,11 +93,12 @@ h2 {
 /* Block */
 
 .block {
-    background: #555555;
+    background: #252525;
+    border: 1px solid #3a3a3a !important;
 }
 
 .block:active {
-    background: #707070;
+    background: #353535;
 }
 
 
@@ -108,53 +109,73 @@ h2 {
 .movement {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 7px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 14px;
 }
 
 .movement button {
-    min-height: 55px;
-    padding: 6px 3px;
-    border: none;
-    border-radius: 9px;
+    height: 60px;
+    padding: 0;
+    border: 1px solid #555;
+    border-radius: 12px;
     color: white;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     touch-action: manipulation;
+    transition: transform 0.05s, background 0.05s;
+}
+
+.movement button:active {
+    transform: scale(0.95);
 }
 
 
-/* Left / Right */
+/* Left */
 
-.movementButton {
-    background: #333333;
+#leftButton {
+    background: #202020;
+    font-size: 0;
 }
 
-.movementButton:active {
-    background: #555555;
+#leftButton::before {
+    content: "◀";
+    font-size: 28px;
+}
+
+
+/* Right */
+
+#rightButton {
+    background: #202020;
+    font-size: 0;
+}
+
+#rightButton::before {
+    content: "▶";
+    font-size: 28px;
 }
 
 
 /* Skip */
 
 .skipButton {
-    background: #444444;
+    background: #303030;
 }
 
 .skipButton:active {
-    background: #666666;
+    background: #444444;
 }
 
 
 /* Enter */
 
 .enterButton {
-    background: #6b5200;
+    background: #454545;
 }
 
 .enterButton:active {
-    background: #947000;
+    background: #5a5a5a;
 }
 
 
@@ -238,8 +259,12 @@ h2 {
     }
 
     .movement button {
-        min-height: 50px;
-        font-size: 11px;
+        height: 50px;
+    }
+
+    #leftButton::before,
+    #rightButton::before {
+        font-size: 24px;
     }
 
     .emotes {
