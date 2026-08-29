@@ -16,65 +16,94 @@
 
         <h1>TTRPG</h1>
 
-        <!-- Character Selection -->
-        <div id="characterSelection">
 
-            <h2>Choose your character</h2>
+        <!-- ========================================
+             Role / Character Selection
+             ======================================== -->
 
-            <div class="characters">
+        <div id="selectionScreen">
 
-                <button class="characterButton" data-character="Knight">
-                    Knight
+            <!-- Dungeon Master -->
+            <div class="dungeonMasterSection">
+
+                <h2>Dungeon Master</h2>
+
+                <button
+                    id="dungeonMasterButton"
+                    class="dungeonMasterButton"
+                    data-character="Dungeon Master"
+                >
+                    DUNGEON MASTER
                 </button>
 
-                <button class="characterButton" data-character="Skeleton">
-                    Skeleton
-                </button>
+            </div>
 
-                <button class="characterButton" data-character="Zombie">
-                    Zombie
-                </button>
 
-                <button class="characterButton" data-character="Witch">
-                    Witch
-                </button>
+            <!-- Characters -->
+            <div class="characterSection">
 
-                <button class="characterButton" data-character="Demon">
-                    Demon
-                </button>
+                <h2>Choose your character</h2>
 
-                <button class="characterButton" data-character="Pumpkinman">
-                    Pumpkinman
-                </button>
+                <div class="characters">
 
-                <button class="characterButton" data-character="Vampire">
-                    Vampire
-                </button>
+                    <button class="characterButton" data-character="Knight">
+                        Knight
+                    </button>
 
-                <button class="characterButton" data-character="Slime">
-                    Slime
-                </button>
+                    <button class="characterButton" data-character="Skeleton">
+                        Skeleton
+                    </button>
 
-                <button class="characterButton" data-character="Ghost">
-                    Ghost
-                </button>
+                    <button class="characterButton" data-character="Zombie">
+                        Zombie
+                    </button>
 
-                <button class="characterButton" data-character="Scarecrow">
-                    Scarecrow
-                </button>
+                    <button class="characterButton" data-character="Witch">
+                        Witch
+                    </button>
+
+                    <button class="characterButton" data-character="Demon">
+                        Demon
+                    </button>
+
+                    <button class="characterButton" data-character="Pumpkinman">
+                        Pumpkinman
+                    </button>
+
+                    <button class="characterButton" data-character="Vampire">
+                        Vampire
+                    </button>
+
+                    <button class="characterButton" data-character="Slime">
+                        Slime
+                    </button>
+
+                    <button class="characterButton" data-character="Ghost">
+                        Ghost
+                    </button>
+
+                    <button class="characterButton" data-character="Scarecrow">
+                        Scarecrow
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- Controls after character selection -->
-        <div id="actionSelection" class="hidden">
+        <!-- ========================================
+             Player Controls
+             ======================================== -->
+
+        <div id="playerControls" class="hidden">
 
             <h2 id="selectedCharacter"></h2>
 
 
             <!-- Main actions -->
+
             <div class="mainActions">
 
                 <button id="attackButton" class="attack">
@@ -88,15 +117,16 @@
             </div>
 
 
-            <!-- Movement / controls -->
+            <!-- Movement / Controls -->
+
             <div class="movement">
 
                 <button id="leftButton" class="movementButton">
-                    ← LEFT
+                    ◀
                 </button>
 
                 <button id="rightButton" class="movementButton">
-                    RIGHT →
+                    ▶
                 </button>
 
                 <button id="skipButton" class="skipButton">
@@ -111,6 +141,7 @@
 
 
             <!-- Emotes -->
+
             <div class="emoteSection">
 
                 <h2>Emotes</h2>
@@ -127,6 +158,114 @@
 
                     <button class="emoteButton" data-emote="Hihi">
                         Hihi
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             Dungeon Master Controls
+             ======================================== -->
+
+        <div id="dungeonMasterControls" class="hidden">
+
+            <h2>Dungeon Master</h2>
+
+
+            <!-- DM Movement / Controls -->
+
+            <div class="movement dmMovement">
+
+                <button id="dmLeftButton" class="movementButton">
+                    ◀
+                </button>
+
+                <button id="dmRightButton" class="movementButton">
+                    ▶
+                </button>
+
+                <button id="dmSkipButton" class="skipButton">
+                    SKIP
+                </button>
+
+                <button id="dmEnterButton" class="enterButton">
+                    ENTER
+                </button>
+
+            </div>
+
+
+            <!-- Resolve Points -->
+
+            <div class="resolvePoints">
+
+                <h2>Resolve Points</h2>
+
+                <!-- Negative -->
+
+                <div class="rpGrid">
+
+                    <button class="rpButton negative" data-rp="-1000">
+                        -1000 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-500">
+                        -500 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-200">
+                        -200 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-100">
+                        -100 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-50">
+                        -50 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-20">
+                        -20 RP
+                    </button>
+
+                    <button class="rpButton negative" data-rp="-10">
+                        -10 RP
+                    </button>
+
+
+                    <!-- Positive -->
+
+                    <button class="rpButton positive" data-rp="10">
+                        +10 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="20">
+                        +20 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="50">
+                        +50 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="100">
+                        +100 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="200">
+                        +200 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="500">
+                        +500 RP
+                    </button>
+
+                    <button class="rpButton positive" data-rp="1000">
+                        +1000 RP
                     </button>
 
                 </div>
