@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PPG-TTRPG</title>
+    <title>TTRPG Game</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,10 +14,11 @@
 
     <div class="container">
 
-        <h1>PPG-TTRPG</h1>
+        <h1>TTRPG</h1>
 
-        <!-- Charakterauswahl -->
+        <!-- Character Selection -->
         <div id="characterSelection">
+
             <h2>Choose your character</h2>
 
             <div class="characters">
@@ -62,43 +64,72 @@
                 </button>
 
             </div>
+
         </div>
 
 
-        <!-- Aktionen -->
+        <!-- Controls after character selection -->
         <div id="actionSelection" class="hidden">
 
             <h2 id="selectedCharacter"></h2>
 
+
+            <!-- Main actions -->
             <div class="mainActions">
 
                 <button id="attackButton" class="attack">
                     ATTACK
                 </button>
 
-                <button id="skipButton" class="skip">
+                <button id="blockButton" class="block">
+                    BLOCK
+                </button>
+
+            </div>
+
+
+            <!-- Movement / controls -->
+            <div class="movement">
+
+                <button id="leftButton" class="movementButton">
+                    ← LEFT
+                </button>
+
+                <button id="rightButton" class="movementButton">
+                    RIGHT →
+                </button>
+
+                <button id="skipButton" class="skipButton">
                     SKIP
+                </button>
+
+                <button id="enterButton" class="enterButton">
+                    ENTER
                 </button>
 
             </div>
 
 
             <!-- Emotes -->
-            <h2>Emotes</h2>
+            <div class="emoteSection">
 
-            <div class="emotes">
+                <h2>Emotes</h2>
 
-                <button class="emoteButton" data-emote="Good Job">
-                    Good Job
-                </button>
+                <div class="emotes">
 
-                <button class="emoteButton" data-emote="NOPE">
-                    NOPE
-                </button>
+                    <button class="emoteButton" data-emote="Good Job">
+                        Good Job
+                    </button>
 
-                <button class="emoteButton" data-emote="Hihi">
-                    Hihi
-                </button>
+                    <button class="emoteButton" data-emote="NOPE">
+                        NOPE
+                    </button>
+
+                    <button class="emoteButton" data-emote="Hihi">
+                        Hihi
+                    </button>
+
+                </div>
 
             </div>
 
@@ -106,7 +137,9 @@
 
     </div>
 
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
