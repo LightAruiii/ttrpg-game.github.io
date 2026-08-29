@@ -1,6 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 20px;
+    padding: 12px;
     background: #1a1a1a;
     color: white;
     font-family: Arial, sans-serif;
@@ -8,37 +12,42 @@ body {
 }
 
 .container {
+    width: 100%;
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
+    font-size: 30px;
+    margin: 8px 0 15px;
 }
 
 h2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin: 10px 0;
 }
 
 
-/* Charakterauswahl */
+/* ========================================
+   Character selection
+   ======================================== */
 
 .characters {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 8px;
 }
 
 .characterButton {
-    padding: 18px 10px;
-    font-size: 18px;
+    min-height: 52px;
+    padding: 8px;
+    font-size: 16px;
     border: 2px solid #444;
-    border-radius: 10px;
+    border-radius: 9px;
     background: #292929;
     color: white;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 .characterButton:active {
@@ -46,27 +55,31 @@ h2 {
 }
 
 
-/* Aktionen */
+/* ========================================
+   Main actions
+   ======================================== */
 
 .mainActions {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
 }
 
 .mainActions button {
-    flex: 1;
-    padding: 25px 10px;
-    font-size: 22px;
-    font-weight: bold;
+    min-height: 65px;
+    padding: 10px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     color: white;
+    font-size: 21px;
+    font-weight: bold;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 
-/* Angriff */
+/* Attack */
 
 .attack {
     background: #8b0000;
@@ -77,33 +90,99 @@ h2 {
 }
 
 
-/* Aussetzen */
+/* Block */
 
-.skip {
+.block {
     background: #555555;
 }
 
-.skip:active {
-    background: #777777;
+.block:active {
+    background: #707070;
 }
 
 
-/* Emotes */
+/* ========================================
+   Movement / controls
+   ======================================== */
+
+.movement {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.movement button {
+    min-height: 55px;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+
+/* Left / Right */
+
+.movementButton {
+    background: #333333;
+}
+
+.movementButton:active {
+    background: #555555;
+}
+
+
+/* Skip */
+
+.skipButton {
+    background: #444444;
+}
+
+.skipButton:active {
+    background: #666666;
+}
+
+
+/* Enter */
+
+.enterButton {
+    background: #6b5200;
+}
+
+.enterButton:active {
+    background: #947000;
+}
+
+
+/* ========================================
+   Emotes
+   ======================================== */
+
+.emoteSection {
+    margin-top: 5px;
+}
 
 .emotes {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
 }
 
 .emoteButton {
-    padding: 18px;
-    font-size: 20px;
+    min-height: 48px;
+    padding: 7px 3px;
     border: none;
-    border-radius: 10px;
+    border-radius: 9px;
     background: #292929;
     color: white;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 .emoteButton:active {
@@ -111,29 +190,65 @@ h2 {
 }
 
 
-/* Verstecken */
+/* ========================================
+   Hidden
+   ======================================== */
 
 .hidden {
     display: none;
 }
 
 
-/* Handy */
+/* ========================================
+   Small phones
+   ======================================== */
 
 @media (max-width: 400px) {
 
     body {
-        padding: 12px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin: 5px 0 10px;
+    }
+
+    h2 {
+        font-size: 17px;
+        margin: 7px 0;
     }
 
     .characters {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 6px;
     }
 
     .characterButton {
-        padding: 15px 5px;
-        font-size: 16px;
+        min-height: 45px;
+        font-size: 14px;
+    }
+
+    .mainActions button {
+        min-height: 58px;
+        font-size: 19px;
+    }
+
+    .movement {
+        gap: 5px;
+    }
+
+    .movement button {
+        min-height: 50px;
+        font-size: 11px;
+    }
+
+    .emotes {
+        gap: 5px;
+    }
+
+    .emoteButton {
+        min-height: 43px;
+        font-size: 12px;
     }
 
 }
