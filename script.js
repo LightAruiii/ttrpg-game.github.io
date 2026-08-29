@@ -1,5 +1,10 @@
-// Verbindung zum Online-WebSocket-Server
-const socket = new WebSocket("wss://ttrpg-server.onrender.com");
+// ========================================
+// WebSocket connection
+// ========================================
+
+const socket = new WebSocket(
+    "wss://ttrpg-server.onrender.com"
+);
 
 socket.addEventListener("open", function () {
     console.log("Connected to TTRPG server");
@@ -18,33 +23,96 @@ socket.addEventListener("error", function (error) {
 });
 
 
-// Charakterauswahl
-const characterButtons = document.querySelectorAll(".characterButton");
+// ========================================
+// Elements
+// ========================================
 
-const characterSelection = document.getElementById("characterSelection");
-const actionSelection = document.getElementById("actionSelection");
+const characterButtons =
+    document.querySelectorAll(".characterButton");
 
-const selectedCharacter = document.getElementById("selectedCharacter");
+const characterSelection =
+    document.getElementById("characterSelection");
 
-const attackButton = document.getElementById("attackButton");
-const skipButton = document.getElementById("skipButton");
+const actionSelection =
+    document.getElementById("actionSelection");
 
-const emoteButtons = document.querySelectorAll(".emoteButton");
+const selectedCharacter =
+    document.getElementById("selectedCharacter");
+
+const attackButton =
+    document.getElementById("attackButton");
+
+const blockButton =
+    document.getElementById("blockButton");
+
+const leftButton =
+    document.getElementById("leftButton");
+
+const rightButton =
+    document.getElementById("rightButton");
+
+const skipButton =
+    document.getElementById("skipButton");
+
+const enterButton =
+    document.getElementById("enterButton");
+
+const emoteButtons =
+    document.querySelectorAll(".emoteButton");
+
+
+// ========================================
+// Player
+// ========================================
 
 let playerCharacter = null;
 
 
-// Charakter auswählen
-characterButtons.forEach(function(button) {
+// ========================================
+// Send command
+// ========================================
 
-    button.addEventListener("click", function() {
+function sendCommand(action) {
 
-        playerCharacter = button.dataset.character;
+    if (playerCharacter === null) {
+        return;
+    }
+
+    const message = {
+        character: playerCharacter,
+        action: action
+    };
+
+    if (socket.readyState === WebSocket.OPEN) {
+
+        socket.send(JSON.stringify(message));
+
+        console.log("Sent:", message);
+
+    } else {
+
+        console.log("Server is not connected.");
+
+    }
+}
+
+
+// ========================================
+// Character selection
+// ========================================
+
+characterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        playerCharacter =
+            button.dataset.character;
 
         selectedCharacter.textContent =
             "Selected: " + playerCharacter;
 
         characterSelection.classList.add("hidden");
+
         actionSelection.classList.remove("hidden");
 
     });
@@ -52,56 +120,86 @@ characterButtons.forEach(function(button) {
 });
 
 
+// ========================================
 // ATTACK
-attackButton.addEventListener("click", function() {
+// ========================================
 
-    const message = {
-        character: playerCharacter,
-        action: "ATTACK"
-    };
+attackButton.addEventListener("click", function () {
 
-    if (socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify(message));
-
-        console.log("Sent:", message);
-
-        alert(playerCharacter + " attacks!");
-    }
-    else {
-        alert("Not connected to server.");
-    }
+    sendCommand("ATTACK");
 
 });
 
 
+// ========================================
+// BLOCK
+// ========================================
+
+blockButton.addEventListener("click", function () {
+
+    sendCommand("BLOCK");
+
+});
+
+
+// ========================================
+// LEFT
+// ========================================
+
+leftButton.addEventListener("click", function () {
+
+    sendCommand("LEFT");
+
+});
+
+
+// ========================================
+// RIGHT
+// ========================================
+
+rightButton.addEventListener("click", function () {
+
+    sendCommand("RIGHT");
+
+});
+
+
+// ========================================
 // SKIP
-skipButton.addEventListener("click", function() {
+// ========================================
 
-    const message = {
-        character: playerCharacter,
-        action: "SKIP"
-    };
+skipButton.addEventListener("click", function () {
 
-    if (socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify(message));
-
-        console.log("Sent:", message);
-
-        alert(playerCharacter + " skips the turn.");
-    }
-    else {
-        alert("Not connected to server.");
-    }
+    sendCommand("SKIP");
 
 });
 
 
-// Emotes
-emoteButtons.forEach(function(button) {
+// ========================================
+// ENTER
+// ========================================
 
-    button.addEventListener("click", function() {
+enterButton.addEventListener("click", function () {
 
-        const emote = button.dataset.emote;
+    sendCommand("ENTER");
+
+});
+
+
+// ========================================
+// EMOTES
+// ========================================
+
+emoteButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        if (playerCharacter === null) {
+            return;
+        }
+
+        const emote =
+            button.dataset.emote;
 
         const message = {
             character: playerCharacter,
@@ -110,14 +208,15 @@ emoteButtons.forEach(function(button) {
         };
 
         if (socket.readyState === WebSocket.OPEN) {
+
             socket.send(JSON.stringify(message));
 
             console.log("Sent:", message);
 
-            alert(playerCharacter + ": " + emote);
-        }
-        else {
-            alert("Not connected to server.");
+        } else {
+
+            console.log("Server is not connected.");
+
         }
 
     });
