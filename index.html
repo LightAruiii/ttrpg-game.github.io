@@ -16,14 +16,12 @@
 
         <h1>TTRPG</h1>
 
-
         <!-- ========================================
-             Role / Character Selection
+             ROLE / CHARACTER SELECTION
              ======================================== -->
 
         <div id="selectionScreen">
 
-            <!-- Dungeon Master -->
             <div class="dungeonMasterSection">
 
                 <h2>Dungeon Master</h2>
@@ -31,7 +29,6 @@
                 <button
                     id="dungeonMasterButton"
                     class="dungeonMasterButton"
-                    data-character="Dungeon Master"
                 >
                     DUNGEON MASTER
                 </button>
@@ -39,7 +36,6 @@
             </div>
 
 
-            <!-- Characters -->
             <div class="characterSection">
 
                 <h2>Choose your character</h2>
@@ -94,15 +90,12 @@
 
 
         <!-- ========================================
-             Player Controls
+             PLAYER CONTROLS
              ======================================== -->
 
         <div id="playerControls" class="hidden">
 
             <h2 id="selectedCharacter"></h2>
-
-
-            <!-- Main actions -->
 
             <div class="mainActions">
 
@@ -116,8 +109,6 @@
 
             </div>
 
-
-            <!-- Movement / Controls -->
 
             <div class="movement">
 
@@ -139,8 +130,6 @@
 
             </div>
 
-
-            <!-- Emotes -->
 
             <div class="emoteSection">
 
@@ -168,7 +157,7 @@
 
 
         <!-- ========================================
-             Dungeon Master Controls
+             DUNGEON MASTER CONTROLS
              ======================================== -->
 
         <div id="dungeonMasterControls" class="hidden">
@@ -176,9 +165,9 @@
             <h2>Dungeon Master</h2>
 
 
-            <!-- DM Movement / Controls -->
+            <!-- DM Movement -->
 
-            <div class="movement dmMovement">
+            <div class="movement">
 
                 <button id="dmLeftButton" class="movementButton">
                     ◀
@@ -200,12 +189,12 @@
 
 
             <!-- ========================================
-                 Resolve Point Target
+                 CHARACTER TARGET
                  ======================================== -->
 
             <div class="resolveTarget">
 
-                <h2>Give Resolve Points To</h2>
+                <h2>Choose Character</h2>
 
                 <div class="characters dmCharacters">
 
@@ -259,7 +248,25 @@
 
 
             <!-- ========================================
-                 Resolve Points
+                 LEVEL UP
+                 ======================================== -->
+
+            <div class="levelUpSection">
+
+                <h2>Level Up</h2>
+
+                <button
+                    id="levelUpButton"
+                    class="levelUpButton"
+                >
+                    LEVEL UP
+                </button>
+
+            </div>
+
+
+            <!-- ========================================
+                 RESOLVE POINTS
                  ======================================== -->
 
             <div class="resolvePoints">
