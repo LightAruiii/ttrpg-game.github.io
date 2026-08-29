@@ -88,8 +88,21 @@ const dmSkipButton =
 const dmEnterButton =
     document.getElementById("dmEnterButton");
 
+
+// ========================================
+// Dungeon Master RP target
+// ========================================
+
+const dmCharacterButtons =
+    document.querySelectorAll(".dmCharacterButton");
+
+const selectedTarget =
+    document.getElementById("selectedTarget");
+
 const rpButtons =
     document.querySelectorAll(".rpButton");
+
+let selectedRPCharacter = null;
 
 
 // ========================================
@@ -121,6 +134,7 @@ function sendCommand(action) {
         console.log("Sent:", message);
 
     }
+
 }
 
 
@@ -130,9 +144,14 @@ function sendCommand(action) {
 
 function sendResolvePoints(amount) {
 
+    if (selectedRPCharacter === null) {
+        return;
+    }
+
     const message = {
         character: "Dungeon Master",
         action: "RESOLVE_POINTS",
+        target: selectedRPCharacter,
         amount: amount
     };
 
@@ -143,6 +162,7 @@ function sendResolvePoints(amount) {
         console.log("Sent:", message);
 
     }
+
 }
 
 
@@ -262,12 +282,12 @@ emoteButtons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-        const emote =
-            button.dataset.emote;
-
         if (playerCharacter === null) {
             return;
         }
+
+        const emote =
+            button.dataset.emote;
 
         const message = {
             character: playerCharacter,
@@ -328,6 +348,31 @@ dmSkipButton.addEventListener("click", function () {
 dmEnterButton.addEventListener("click", function () {
 
     sendCommand("ENTER");
+
+});
+
+
+// ========================================
+// Dungeon Master selects RP target
+// ========================================
+
+dmCharacterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        selectedRPCharacter =
+            button.dataset.target;
+
+        dmCharacterButtons.forEach(function (otherButton) {
+            otherButton.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        selectedTarget.textContent =
+            "Selected: " + selectedRPCharacter;
+
+    });
 
 });
 
