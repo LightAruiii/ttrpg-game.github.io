@@ -24,17 +24,25 @@ socket.addEventListener("error", function (error) {
 
 
 // ========================================
-// Elements
+// Selection
 // ========================================
+
+const selectionScreen =
+    document.getElementById("selectionScreen");
 
 const characterButtons =
     document.querySelectorAll(".characterButton");
 
-const characterSelection =
-    document.getElementById("characterSelection");
+const dungeonMasterButton =
+    document.getElementById("dungeonMasterButton");
 
-const actionSelection =
-    document.getElementById("actionSelection");
+
+// ========================================
+// Player controls
+// ========================================
+
+const playerControls =
+    document.getElementById("playerControls");
 
 const selectedCharacter =
     document.getElementById("selectedCharacter");
@@ -62,14 +70,37 @@ const emoteButtons =
 
 
 // ========================================
-// Player
+// Dungeon Master controls
+// ========================================
+
+const dungeonMasterControls =
+    document.getElementById("dungeonMasterControls");
+
+const dmLeftButton =
+    document.getElementById("dmLeftButton");
+
+const dmRightButton =
+    document.getElementById("dmRightButton");
+
+const dmSkipButton =
+    document.getElementById("dmSkipButton");
+
+const dmEnterButton =
+    document.getElementById("dmEnterButton");
+
+const rpButtons =
+    document.querySelectorAll(".rpButton");
+
+
+// ========================================
+// Player state
 // ========================================
 
 let playerCharacter = null;
 
 
 // ========================================
-// Send command
+// Send normal command
 // ========================================
 
 function sendCommand(action) {
@@ -89,9 +120,27 @@ function sendCommand(action) {
 
         console.log("Sent:", message);
 
-    } else {
+    }
+}
 
-        console.log("Server is not connected.");
+
+// ========================================
+// Send Resolve Point command
+// ========================================
+
+function sendResolvePoints(amount) {
+
+    const message = {
+        character: "Dungeon Master",
+        action: "RESOLVE_POINTS",
+        amount: amount
+    };
+
+    if (socket.readyState === WebSocket.OPEN) {
+
+        socket.send(JSON.stringify(message));
+
+        console.log("Sent:", message);
 
     }
 }
@@ -111,9 +160,11 @@ characterButtons.forEach(function (button) {
         selectedCharacter.textContent =
             "Selected: " + playerCharacter;
 
-        characterSelection.classList.add("hidden");
+        selectionScreen.classList.add("hidden");
 
-        actionSelection.classList.remove("hidden");
+        playerControls.classList.remove("hidden");
+
+        dungeonMasterControls.classList.add("hidden");
 
     });
 
@@ -121,7 +172,24 @@ characterButtons.forEach(function (button) {
 
 
 // ========================================
-// ATTACK
+// Dungeon Master selection
+// ========================================
+
+dungeonMasterButton.addEventListener("click", function () {
+
+    playerCharacter = "Dungeon Master";
+
+    selectionScreen.classList.add("hidden");
+
+    playerControls.classList.add("hidden");
+
+    dungeonMasterControls.classList.remove("hidden");
+
+});
+
+
+// ========================================
+// Player ATTACK
 // ========================================
 
 attackButton.addEventListener("click", function () {
@@ -132,7 +200,7 @@ attackButton.addEventListener("click", function () {
 
 
 // ========================================
-// BLOCK
+// Player BLOCK
 // ========================================
 
 blockButton.addEventListener("click", function () {
@@ -143,7 +211,7 @@ blockButton.addEventListener("click", function () {
 
 
 // ========================================
-// LEFT
+// Player LEFT
 // ========================================
 
 leftButton.addEventListener("click", function () {
@@ -154,7 +222,7 @@ leftButton.addEventListener("click", function () {
 
 
 // ========================================
-// RIGHT
+// Player RIGHT
 // ========================================
 
 rightButton.addEventListener("click", function () {
@@ -165,7 +233,7 @@ rightButton.addEventListener("click", function () {
 
 
 // ========================================
-// SKIP
+// Player SKIP
 // ========================================
 
 skipButton.addEventListener("click", function () {
@@ -176,7 +244,7 @@ skipButton.addEventListener("click", function () {
 
 
 // ========================================
-// ENTER
+// Player ENTER
 // ========================================
 
 enterButton.addEventListener("click", function () {
@@ -187,19 +255,19 @@ enterButton.addEventListener("click", function () {
 
 
 // ========================================
-// EMOTES
+// Player EMOTES
 // ========================================
 
 emoteButtons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
+        const emote =
+            button.dataset.emote;
+
         if (playerCharacter === null) {
             return;
         }
-
-        const emote =
-            button.dataset.emote;
 
         const message = {
             character: playerCharacter,
@@ -213,11 +281,69 @@ emoteButtons.forEach(function (button) {
 
             console.log("Sent:", message);
 
-        } else {
-
-            console.log("Server is not connected.");
-
         }
+
+    });
+
+});
+
+
+// ========================================
+// Dungeon Master LEFT
+// ========================================
+
+dmLeftButton.addEventListener("click", function () {
+
+    sendCommand("LEFT");
+
+});
+
+
+// ========================================
+// Dungeon Master RIGHT
+// ========================================
+
+dmRightButton.addEventListener("click", function () {
+
+    sendCommand("RIGHT");
+
+});
+
+
+// ========================================
+// Dungeon Master SKIP
+// ========================================
+
+dmSkipButton.addEventListener("click", function () {
+
+    sendCommand("SKIP");
+
+});
+
+
+// ========================================
+// Dungeon Master ENTER
+// ========================================
+
+dmEnterButton.addEventListener("click", function () {
+
+    sendCommand("ENTER");
+
+});
+
+
+// ========================================
+// Dungeon Master Resolve Points
+// ========================================
+
+rpButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        const amount =
+            Number(button.dataset.rp);
+
+        sendResolvePoints(amount);
 
     });
 
