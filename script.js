@@ -90,17 +90,17 @@ const dmEnterButton =
 
 
 // ========================================
-// Dragonbaby controls
+// Enemy controls
 // ========================================
 
-const dragonPrepareButton =
-    document.getElementById("dragonPrepareButton");
+const enemyAttackButton =
+    document.getElementById("enemyAttackButton");
 
-const dragonAttackButton =
-    document.getElementById("dragonAttackButton");
+const enemyPrepareButton =
+    document.getElementById("enemyPrepareButton");
 
-const dragonSkipButton =
-    document.getElementById("dragonSkipButton");
+const enemySkipButton =
+    document.getElementById("enemySkipButton");
 
 
 // ========================================
@@ -146,9 +146,9 @@ function sendCommand(action) {
 
     if (socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(message));
-
         console.log("Sent:", message);
     }
+
 }
 
 
@@ -171,9 +171,9 @@ function sendResolvePoints(amount) {
 
     if (socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(message));
-
         console.log("Sent:", message);
     }
+
 }
 
 
@@ -195,28 +195,9 @@ function sendLevelUp() {
 
     if (socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(message));
-
         console.log("Sent:", message);
     }
-}
 
-
-// ========================================
-// Send Dragonbaby command
-// ========================================
-
-function sendDragonCommand(action) {
-
-    const message = {
-        character: "Dungeon Master",
-        action: action
-    };
-
-    if (socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify(message));
-
-        console.log("Sent:", message);
-    }
 }
 
 
@@ -314,7 +295,6 @@ emoteButtons.forEach(function (button) {
 
         if (socket.readyState === WebSocket.OPEN) {
             socket.send(JSON.stringify(message));
-
             console.log("Sent:", message);
         }
 
@@ -324,7 +304,7 @@ emoteButtons.forEach(function (button) {
 
 
 // ========================================
-// Dungeon Master movement
+// Dungeon Master controls
 // ========================================
 
 dmLeftButton.addEventListener("click", function () {
@@ -345,19 +325,19 @@ dmEnterButton.addEventListener("click", function () {
 
 
 // ========================================
-// Dragonbaby buttons
+// Enemy controls
 // ========================================
 
-dragonPrepareButton.addEventListener("click", function () {
-    sendDragonCommand("DRAGON_PREPARE");
+enemyAttackButton.addEventListener("click", function () {
+    sendCommand("ENEMY_ATTACK");
 });
 
-dragonAttackButton.addEventListener("click", function () {
-    sendDragonCommand("DRAGON_ATTACK");
+enemyPrepareButton.addEventListener("click", function () {
+    sendCommand("ENEMY_PREPARE");
 });
 
-dragonSkipButton.addEventListener("click", function () {
-    sendDragonCommand("DRAGON_SKIP");
+enemySkipButton.addEventListener("click", function () {
+    sendCommand("ENEMY_SKIP");
 });
 
 
