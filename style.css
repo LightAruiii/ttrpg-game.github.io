@@ -107,9 +107,6 @@ h2 {
     touch-action: manipulation;
 }
 
-
-/* Attack */
-
 .attack {
     background: #8b0000;
 }
@@ -117,9 +114,6 @@ h2 {
 .attack:active {
     background: #b30000;
 }
-
-
-/* Block */
 
 .block {
     background: #252525;
@@ -159,9 +153,6 @@ h2 {
     transform: scale(0.95);
 }
 
-
-/* Left / Right */
-
 .movementButton {
     background: #202020;
     font-size: 28px;
@@ -171,9 +162,6 @@ h2 {
     background: #363636;
 }
 
-
-/* Skip */
-
 .skipButton {
     background: #303030;
 }
@@ -182,15 +170,65 @@ h2 {
     background: #444444;
 }
 
-
-/* Enter */
-
 .enterButton {
     background: #454545;
 }
 
 .enterButton:active {
     background: #5a5a5a;
+}
+
+
+/* ========================================
+   Dragonbaby controls
+   ======================================== */
+
+.dragonSection {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.dragonButtons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.dragonButtons button {
+    min-height: 58px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.dragonPrepareButton {
+    background: #5b4300;
+}
+
+.dragonPrepareButton:active {
+    background: #806000;
+}
+
+.dragonAttackButton {
+    background: #8b0000;
+}
+
+.dragonAttackButton:active {
+    background: #b30000;
+}
+
+.dragonSkipButton {
+    background: #303030;
+}
+
+.dragonSkipButton:active {
+    background: #444444;
 }
 
 
@@ -328,9 +366,6 @@ h2 {
     transform: scale(0.96);
 }
 
-
-/* Negative */
-
 .negative {
     background: #3b2020;
 }
@@ -338,9 +373,6 @@ h2 {
 .negative:active {
     background: #522828;
 }
-
-
-/* Positive */
 
 .positive {
     background: #203b20;
@@ -430,4 +462,8 @@ h2 {
         font-size: 17px;
     }
 
+    .dragonButtons button {
+        min-height: 52px;
+        font-size: 15px;
+    }
 }
